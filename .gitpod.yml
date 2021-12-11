@@ -1,3 +1,26 @@
+ports:
+  - port: 8080
+    visibility: public
+    onOpen: open-browser
+  - port: 26657
+    visibility: public
+  - port: 1317
+    visibility: public
+    
+tasks:
+  - name: osmosis
+    before: cd osmosis || git clone https://github.com/onezoomin/osmosis
+    init: |
+      cd /workspace/osmosis-local/osmosis && git pull && make -k install && 
+      cd /workspace/osmosis-local/osmosis && scripts/start_testnode.sh -c osmo-gitpod | tee start_testnode$(date '+%Y-%m-%d').log && 
+      mv $HOME/.osmosisd /workspace/osmosis-local/
+    command: osmosisd start --home  /workspace/osmosis-local/.osmosisd
+  - name: osmosis-frontend
+    before: nvm install 15 && cd osmosis-frontend || git clone https://github.com/onezoomin/osmosis-frontend
+    init: cd /workspace/osmosis-local/osmosis-frontend && git pull && nvm use 15 && yarn && yarn build
+    command: cd /workspace/osmosis-local/osmosis-frontend && nvm use 15 && yarn dev
+    openMode: split-right
+
 github:
   prebuilds:
     master: true
@@ -7,6 +30,7 @@ github:
     addCheck: false
     addComment: false
     addBadge: true
+
 vscode:
   extensions:
     - steoates.autoimport
@@ -19,13 +43,4 @@ vscode:
     - bradlc.vscode-tailwindcss
     - dbaeumer.vscode-eslint
     - k--kato.intellij-idea-keybindings
-tasks:
-  - name: osmosis
-    before: cd osmosis || git clone https://github.com/onezoomin/osmosis
-    init: cd /workspace/osmosis-local/osmosis && git pull && make -k install
-    command: cd /workspace/osmosis-local/osmosis && scripts/start_testnode.sh -c osmo-gitpod | tee start_testnode$(date '+%Y-%m-%d').log && osmosisd start
-  - name: osmosis-frontend
-    before: nvm install 15 && cd osmosis-frontend || git clone https://github.com/onezoomin/osmosis-frontend
-    init: cd /workspace/osmosis-local/osmosis-frontend && git pull && nvm use 15 && yarn && yarn build
-    command: cd /workspace/osmosis-local/osmosis-frontend && nvm use 15 && yarn dev
-    openMode: split-right
+
