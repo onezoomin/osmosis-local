@@ -18,6 +18,7 @@ vscode:
     - golang.go
     - bradlc.vscode-tailwindcss
     - dbaeumer.vscode-eslint
+    - k--kato.intellij-idea-keybindings
 tasks:
   - name: osmosis
     before: cd osmosis || git clone https://github.com/onezoomin/osmosis
