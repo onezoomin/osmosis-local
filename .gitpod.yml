@@ -12,9 +12,9 @@ tasks:
     before: cd osmosis || git clone https://github.com/onezoomin/osmosis
     init: |
       cd /workspace/osmosis-local/osmosis && git pull && make -k install && 
-      cd /workspace/osmosis-local/osmosis && scripts/start_testnode.sh -c osmo-gitpod | tee start_testnode$(date '+%Y-%m-%d').log && 
+      cd /workspace/osmosis-local/osmosis && scripts/start_testnode.sh -c osmo-gitpod 2>&1 | tee start_testnode$(date '+%Y-%m-%d_+%T').log && 
       mv $HOME/.osmosisd /workspace/osmosis-local/
-    command: alias osmosisd="osmosisd --home /workspace/osmosis-local/.osmosisd" && osmosisd start
+    command: alias osmod="osmosisd --home /workspace/osmosis-local/.osmosisd" && osmosisd start --home /workspace/osmosis-local/.osmosisd
   - name: osmosis-frontend
     before: nvm install 15 && cd osmosis-frontend || git clone https://github.com/onezoomin/osmosis-frontend
     init: cd /workspace/osmosis-local/osmosis-frontend && git pull && nvm use 15 && yarn && yarn build
