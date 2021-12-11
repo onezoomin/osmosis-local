@@ -1,3 +1,4 @@
 allocation-ui
 regen-ledger
 .DS_Store
+.osmosisd
