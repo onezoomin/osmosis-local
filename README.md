@@ -1,6 +1,6 @@
 # osmosis-local
 
-get hacking on the regen chain... fast.
+get hacking on the osmosis chain... fast.
 
 1. middle click on this button
 
@@ -16,3 +16,9 @@ hack and rebuild the chain
 
 
 hack and enjoy hot module reload on the front end
+
+
+#notes
+
+takes less than 5 minutes to do the full prebuild and launch
+should be less if there have been no changes that require a new prebuild
