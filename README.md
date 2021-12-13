@@ -17,9 +17,15 @@ hack and rebuild the chain
 
 hack and enjoy hot module reload on the front end
 
+# Gallery
+
+![OsmosisGitpodKeplr](https://user-images.githubusercontent.com/8686454/145776776-cd43c1a4-7d1c-470d-afca-32b664da8521.png)
+
+![OsmosisGitpodVScode](https://user-images.githubusercontent.com/8686454/145777541-a9af7ab7-4899-4bba-9049-5aac92354be2.png)
 
 
 ## notes
 
 takes less than 5 minutes to do the full prebuild and launch  
 should be less if there have been no changes that require a new prebuild
+
