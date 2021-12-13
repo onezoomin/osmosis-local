@@ -18,7 +18,7 @@ tasks:
       mv $HOME/.osmosisd /workspace/osmosis-local/
       ([[ $- =~ i ]] && echo "interactive") ||  echo "non-interactive"
       cat ~/.bashrc.d/aliases
-      . ~/.bashrc.d; osmod version
+      . ~/.bashrc; osmod version
     command:  bash --init-file <(echo ". ~/.bashrc; osmod start &")
   - name: osmosis-frontend
     before: nvm install 15 && cd osmosis-frontend || git clone https://github.com/onezoomin/osmosis-frontend
