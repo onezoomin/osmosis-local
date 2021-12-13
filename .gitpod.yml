@@ -17,6 +17,8 @@ tasks:
       cd /workspace/osmosis-local/osmosis && scripts/start_testnode.sh -c osmo-gitpod 2>&1 | tee start_testnode$(date '+%Y-%m-%d_+%T').log && 
       mv $HOME/.osmosisd /workspace/osmosis-local/
       ([[ $- =~ i ]] && echo "interactive") ||  echo "non-interactive"
+      cat ~/.bashrc.d/aliases
+      source ~/.bashrc.d/aliases
       osmod version
       bash --init-file <(echo "osmod version && exit")
     command:  bash --init-file <(echo "osmod start &; exit")
