@@ -16,7 +16,8 @@ tasks:
       cd /workspace/osmosis-local/osmosis && git pull && make -k install && 
       cd /workspace/osmosis-local/osmosis && scripts/start_testnode.sh -c osmo-gitpod 2>&1 | tee start_testnode$(date '+%Y-%m-%d_+%T').log && 
       mv $HOME/.osmosisd /workspace/osmosis-local/
-      . $HOME/.bashrc && osmod version
+      ([[ $- =~ i ]] && echo "interactive") ||  echo "non-interactive"
+      osmod version
       bash --init-file <(echo "osmod version")
     command:  bash --init-file <(echo "osmod start")
   - name: osmosis-frontend
